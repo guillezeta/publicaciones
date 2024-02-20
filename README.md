@@ -8,7 +8,7 @@ docker run -d -p 5000:5000 \
               --name registry_private \
               -v $(pwd)/docker-registry:/var/lib/registry \
               --network registry \
-              registry:latestroot@registry:/data/docker-sin-auth# 
+              registry:latest
 </pre>
 
 Luego ejecutar en consola dandole permisos de ejecucion
