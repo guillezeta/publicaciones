@@ -1,6 +1,6 @@
 
 En un equpo con docker instalado crear el archivo con el contenido (digamos docker.sh)
-
+<pre>
 docker network create registry
 
 docker run -d -p 5000:5000 \
@@ -9,6 +9,7 @@ docker run -d -p 5000:5000 \
               -v $(pwd)/docker-registry:/var/lib/registry \
               --network registry \
               registry:latestroot@registry:/data/docker-sin-auth# 
+</pre>
 
 Luego ejecutar en consola dandole permisos de ejecucion
 
