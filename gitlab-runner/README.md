@@ -245,6 +245,8 @@ b - Carpeta denominada docker con:
 
 Luego de creado todo esto subimos los archivos al repositorio
 
+<pre>
+
 git add .gitlab-ci.yml
 git add *
 
@@ -252,5 +254,7 @@ git commit -m 'primer codigo pipeline'
 
 git push
 Ingresamos nuevamente el usuario / clave de acceso a gitlab
+</pre>
+
 
 Con esto tenemos que ver que se esta ejecutando nuestro primer pipeline y deberia hacerlo con exito
