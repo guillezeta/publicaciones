@@ -8,7 +8,7 @@ Requerimientos:
 
 DESPLIEGUE DE GITLAB
 
-<env>
+<pre>
 docker network create gitlab
 
 docker run --detach \
@@ -21,7 +21,7 @@ docker run --detach \
   --volume ./data:/var/opt/gitlab \
   --network gitlab \
   gitlab/gitlab-ce:16.7.5-ce.0
-</env>
+</pre>
 
 Luego de que me de el login en el navegador, para obtener la password del usuario root
 
