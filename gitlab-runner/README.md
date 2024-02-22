@@ -191,7 +191,8 @@ ingresamos al proyecto y cremos ls archivos para probar
 
 a - Archivo .gitlab-ci.yml
 
-    <pre>
+<pre>
+
     build master:
   image: docker:dind
   stage: build
@@ -217,13 +218,15 @@ a - Archivo .gitlab-ci.yml
       .
     - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE:latest
     - docker push $CI_REGISTRY_IMAGE:latest
-    </pre>
+
+</pre>
 
 
 b - Carpeta denominada docker con:
     - Archivo Dockerfile con contenido siguiente
 
-    <pre>
+<pre>
+
         FROM nginx:latest
 
         # Copia un archivo index.html que contiene el mensaje "FELICITACIONES!!" en el directorio raíz del servidor web de nginx
@@ -231,13 +234,14 @@ b - Carpeta denominada docker con:
 
         # Define el comando predeterminado a ejecutar cuando se inicie el contenedor
         CMD ["nginx", "-g", "daemon off;"]
-    </pre>
+
+</pre>
 
     - Archivo index.html con contenido 
 
-    <pre>
+<pre>
         MI NUEVA WEB
-    </pre>
+</pre>
 
 Luego de creado todo esto subimos los archivos al repositorio
 
