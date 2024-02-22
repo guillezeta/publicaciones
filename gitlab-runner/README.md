@@ -240,7 +240,7 @@ b - Carpeta denominada docker con:
     - Archivo index.html con contenido 
 
 <pre>
-        MI NUEVA WEB
+        FELICITACIONES Guillez!!
 </pre>
 
 Luego de creado todo esto subimos los archivos al repositorio
