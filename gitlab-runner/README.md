@@ -20,6 +20,10 @@ Características y Configuraciones del contenedor LXC
 
 Plantilla utilizada: Ubuntu 22.04 
 
+Agregar en el equipo instalado un usuario adicional para acceso futuro dado que al configurar el contenedor para uso con docker no permitira acceder nuevamente como root.
+
+Configuarar en /etc/sudoers el usuario creado para que tenga permiso de sudo
+
 Configuracion para uso de docker:
 
 Editar archivo: /etc/pve/lxc/<NRO_CONTENEDOR>.conf
