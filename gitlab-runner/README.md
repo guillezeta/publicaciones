@@ -1,4 +1,4 @@
-Instalación de Gitlab CI/CD
+##Instalación de Gitlab CI/CD
 
 Este documento contiene los pasos para instalar Contenedor Docker con Gitlab y Runner para uso de Pipelines
 
