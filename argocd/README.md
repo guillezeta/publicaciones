@@ -1,6 +1,6 @@
 INSTALACION DE ARGOCD EN KUBERNETES
 
-Agregamos el repo de Helm
+Agregamos el repo de Helm -> para ello tenemos que tener acceso al cluster e instalado Helm.
 
 <pre>
 helm repo add argo https://argoproj.github.io/argo-helm
