@@ -57,7 +57,9 @@ Para la configuracion del Cluster es simple dado aque al tener desplegado Argo C
 
 Ya con la confirmacion de que Argo CD esta ok con el repositorio vamos a bajar en nuestro equipo local el repositorio, en nuestro caso es:
 
+<pre>
 git clone http://192.168.211.129/devops/test.git
+</pre>
 
 Ingresamos nuestro usuario y password
 
@@ -105,11 +107,13 @@ spec:
 
 Luego lo subimos al repositorio 
 
+<pre>
 git add webnginx/*
 
 git commit -m 'Despliegue de nginx en cluster'
 
 git push 
+</pre>
 
 Una vez subidos estos archivos estamos en condiciones de usar Argo para que lo despliegue
 
@@ -156,7 +160,9 @@ Luego al final hay un boton CREATE en la parte superior
 
 Con esto vas a observar que se va a desplegar un nginx y que podras acceder creando en tu cluster un port-worward -> es importante oservar que se creen todos los recursos, incluso el POD que es el ultimo en aparecer en Argo CD.
 
+<pre>
 kubectl port-forward service/webnginx -n webnginx 8282:443
+</pre>
 
 Abris en el navegador la url: http://localhost:8282 y veras el nginx corriendo una web ejemplo
 
@@ -164,12 +170,17 @@ Abris en el navegador la url: http://localhost:8282 y veras el nginx corriendo u
 
 En caso de querer desinstalar Argo CD del cluster
 
+<pre>
 helm list -n argocd
+</pre>
 Desinstalamos Argo!
 
+<pre>
 helm uninstall argo-cd -n argocd
+</pre>
 
 Ahora podemos eliminar los Namespaces que hemos creado
 
+<pre>
 kubectl delete ns argocd
-
+</pre>
