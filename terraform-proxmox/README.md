@@ -20,7 +20,7 @@ pveum user token add terraform3@pve terraform-token --privsep=0
 ├──────────────┼──────────────────────────────────────┤
 │ info         │ {"privsep":"0"}                      │
 ├──────────────┼──────────────────────────────────────┤
-│ value        │ 480bf00a-67e3-4285-b07e-56bf0696c91f │
+│ value        │ XXXXXXXXXX-XXXXXXXXXX-XXXXX-XXXX │
 └──────────────┴──────────────────────────────────────┘
 </pre>
 
