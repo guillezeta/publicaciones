@@ -1,0 +1,93 @@
+---
+- name: "Configurar Contenedor LXC 140 y 141"
+  hosts: proxmox
+  tasks:
+    - name: "Configurar 140"
+      command: 'echo "lxc.apparmor.profile: unconfined" /etc/pve/lxc/140.conf'
+      become: true
+
+  # Para server 140
+  tasks:
+    - name: Agregar lxc.apparmor.profile al archivo /etc/pve/lxc/140.conf
+      lineinfile:
+        path: /etc/pve/lxc/140.conf
+        line: 'lxc.apparmor.profile: unconfined'
+        insertafter: EOF  # Insertar al final del archivo
+
+    - name: Agregar lxc.cgroup.devices.allow al archivo /etc/pve/lxc/140.conf
+      lineinfile:
+        path: /etc/pve/lxc/140.conf
+        line: 'lxc.cgroup.devices.allow: a'
+        insertafter: EOF  # Insertar al final del archivo
+
+    - name: Agregar lxc.cap.drop al archivo /etc/pve/lxc/140.conf
+      lineinfile:
+        path: /etc/pve/lxc/140.conf
+        line: 'lxc.cap.drop:'
+        insertafter: EOF  # Insertar al final del archivo
+
+    - name: Agregar lxc.mount.auto al archivo /etc/pve/lxc/140.conf
+      lineinfile:
+        path: /etc/pve/lxc/140.conf
+        line: 'lxc.mount.auto: "proc:rw sys:rw"'
+        insertafter: EOF  # Insertar al final del archivo
+
+    # Para server 141
+    - name: Agregar lxc.apparmor.profile al archivo /etc/pve/lxc/140.conf
+      lineinfile:
+        path: /etc/pve/lxc/141.conf
+        line: 'lxc.apparmor.profile: unconfined'
+        insertafter: EOF  # Insertar al final del archivo
+
+    - name: Agregar lxc.cgroup.devices.allow al archivo /etc/pve/lxc/140.conf
+      lineinfile:
+        path: /etc/pve/lxc/141.conf
+        line: 'lxc.cgroup.devices.allow: a'
+        insertafter: EOF  # Insertar al final del archivo
+
+    - name: Agregar lxc.cap.drop al archivo /etc/pve/lxc/140.conf
+      lineinfile:
+        path: /etc/pve/lxc/141.conf
+        line: 'lxc.cap.drop:'
+        insertafter: EOF  # Insertar al final del archivo
+
+    - name: Agregar lxc.mount.auto al archivo /etc/pve/lxc/140.conf
+      lineinfile:
+        path: /etc/pve/lxc/141.conf
+        line: 'lxc.mount.auto: "proc:rw sys:rw"'
+        insertafter: EOF  # Insertar al final del archivo        
+
+    - name: Modificar la línea en el archivo de configuración swap 140
+      become: yes
+      lineinfile:
+        path: /etc/pve/lxc/140.conf
+        regexp: '^swap:'
+        line: 'swap: 0'
+
+    - name: Modificar la línea en el archivo de configuración swap 141
+      become: yes
+      lineinfile:
+        path: /etc/pve/lxc/141.conf
+        regexp: '^swap:'
+        line: 'swap: 0'
+
+    - name: Configuramos 140
+      become: yes
+      shell: "pct push 140 /boot/config-$(uname -r) /boot/config-$(uname -r)"
+
+    - name: Configuramos 141
+      become: yes
+      shell: "pct push 141 /boot/config-$(uname -r) /boot/config-$(uname -r)"
+
+    - name: Reiniciar el contenedor 140
+      become: yes
+      shell: pct reboot 140 
+
+
+    - name: Reiniciar el contenedor 141
+      become: yes
+      shell: pct reboot 141 
+
+    - name: Esperar 10 segundos
+      pause:
+        seconds: 15

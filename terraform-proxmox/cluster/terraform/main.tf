@@ -8,13 +8,10 @@ terraform {
   }
 }
 
-
-
 # Lee el archivo JSON
 locals {
   config = jsondecode(file("./secret.json"))
 }
-
 
 provider "proxmox" {
   # url is the hostname (FQDN if you have one) for the proxmox host you'd like to connect to to issue the commands. my proxmox host is 'prox-1u'. Add /api2/json at the end for the API
@@ -37,15 +34,16 @@ resource "proxmox_lxc" "master" {
   hostname     = "master1"
   start        = true
   ostemplate   = local.config.proxmox.template_rocky
-  unprivileged = true
+  unprivileged = false
   ostype       = "centos"
-
+  cores  = 4
+  memory = 1024
   ssh_public_keys =  local.config.ssh.public_key
   
   // Terraform will crash without rootfs defined
   rootfs {
     storage = "local-lvm"
-    size    = "8G"
+    size    = "20G"
   }
 
   nameserver = "8.8.8.8"
@@ -73,15 +71,18 @@ resource "proxmox_lxc" "worker" {
   hostname     = "worker1"
   start        = true
   ostemplate   = local.config.proxmox.template_rocky
-  unprivileged = true
+  unprivileged = false
   ostype       = "centos"
-
+  cores  = 4
+  memory = 1024
   ssh_public_keys =  local.config.ssh.public_key
   
+
+
   // Terraform will crash without rootfs defined
   rootfs {
     storage = "local-lvm"
-    size    = "8G"
+    size    = "20G"
   }
 
   nameserver = "8.8.8.8"
@@ -99,3 +100,4 @@ resource "proxmox_lxc" "worker" {
   }
 
 }
+

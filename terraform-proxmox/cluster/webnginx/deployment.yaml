@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webnginx
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: webnginx
+  template:
+    metadata:
+      labels:
+        app: webnginx
+    spec:
+      containers:
+      - image: nginx
+        name: webnginx
+        ports:
+        - containerPort: 80
