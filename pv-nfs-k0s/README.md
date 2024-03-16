@@ -20,16 +20,23 @@ apt install nfs-kernel-server -y
 
 Creamos una carpeta 
 
-mkdir /data/nfs
+mkdir /data/nfs -p
+mkdir /data/nfs2 -p
 
 Asignamos permisos a la carpeta
 
 chmod 777 /data/nfs/ -R
+chmod 777 /data/nfs/ -R
 
 Configuramos en /etc/exports
 
+<pre>
+
 /data/nfs2 192.168.211.0/24(rw,sync,no_subtree_check)
+
 /data/nfs *(rw,sync,no_subtree_check,insecure)
+
+</pre>
 
 Ejecutamos para renovar lo configurado
 
