@@ -29,6 +29,7 @@ chmod 777 /data/nfs/ -R
 Configuramos en /etc/exports
 
 /data/nfs 192.168.211.0/24(rw,sync,no_subtree_check)
+/data/nfs *(rw,sync,no_subtree_check,insecure)
 
 Ejecutamos para renovar lo configurado
 
