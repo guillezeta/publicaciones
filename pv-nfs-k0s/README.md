@@ -5,6 +5,11 @@
 
 En Proxmox vamos a utilizar un contendor lxc de Ubuntu
 
+Editamos el archivo /etc/pve/lxc/135.conf agregando al final
+
+lxc.apparmor.profile: unconfined
+
+
 Actualizamos los paquetes de Ubuntu
 
 apt update && apt upgrade -y
