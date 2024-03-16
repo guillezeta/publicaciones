@@ -12,4 +12,4 @@ spec:
     - ReadWriteMany
   nfs:
     server: 192.168.211.135
-    path: "/data/k0s"
+    path: "/data/nfs"
