@@ -11,8 +11,10 @@ kubectl apply -k .
 
 En grafana debemos buscar el Servicio de Loki 
 
+<pre>
 Los servicios poseen una estructura http://<nombre-servicio>.<namespace>,svc.<identificacion-cluster>:<puerto> 
-
+</pre>
+En mi caso:
 <pre>
 http://loki-service.kube-logging.svc.cluster.local:3100
 </pre>
