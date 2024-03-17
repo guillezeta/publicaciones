@@ -12,7 +12,7 @@ kubectl apply -k .
 En grafana debemos buscar el Servicio de Loki 
 
 <pre>
-Los servicios poseen una estructura http://<nombre-servicio>.<namespace>,svc.<identificacion-cluster>:<puerto> 
+Los servicios poseen una estructura "http://<nombre-servicio>.<namespace>,svc.<identificacion-cluster>:<puerto>"
 </pre>
 En mi caso:
 <pre>
