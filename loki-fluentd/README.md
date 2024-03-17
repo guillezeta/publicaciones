@@ -9,7 +9,9 @@ Ingresamos en la carpeta loki y ejecutamos
 kubectl apply -k .
 </pre>
 
-En grafana debemos buscar el Servicio de Loki acorde al servicio
+En grafana debemos buscar el Servicio de Loki 
+
+Los servicios poseen una estructura http://<nombre-servicio>.<namespace>,svc.<identificacion-cluster>:<puerto> 
 
 <pre>
 http://loki-service.kube-logging.svc.cluster.local:3100
