@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+  sops:
+    image: mozilla/sops:latest
+    container_name: "sops"        
+    command: ["/bin/sh", "-c", "sops --decrypt /secrets/postgres.env.age > /secrets/postgres.env"]
+    environment:
+      - SOPS_AGE_KEY_FILE=/age/key.txt
+    volumes:
+      - ./secrets:/secrets
+      - ./age:/age:ro
+
+  #Contenedor Postgres
+
+  postgres:
+      image: "postgres:11.6"
+      container_name: "postgres"     
+      depends_on:
+          sops:
+              condition: service_completed_successfully      
+      ports:
+          - "5432:5432"
+      environment:
+          TZ: 'America/Argentina/Buenos_Aires' 
+      env_file:
+          - ./secrets/postgres.env           
+      volumes:
+          - vol-postgres3:/var/lib/postgresql/data  
+          - ./docker/postgres/db:/docker-entrypoint-initdb.d  
+      restart: always
+      networks:
+          - sistemas
+
+#Definicion de volumen para postgres
+volumes:
+  vol-postgres3:
+    driver: local 
+
+#Configuracion de Red para contenedores
+networks:
+  sistemas:
+    driver: bridge 
