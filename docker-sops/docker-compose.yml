@@ -1,5 +1,8 @@
 version: "3.7"
 services:
+
+  #Contenedor SOPS
+
   sops:
     image: mozilla/sops:latest
     container_name: "sops"    
