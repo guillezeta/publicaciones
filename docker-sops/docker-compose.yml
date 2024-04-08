@@ -2,13 +2,14 @@ version: "3.7"
 services:
   sops:
     image: mozilla/sops:latest
-    container_name: "sops"        
-    command: ["/bin/sh", "-c", "sops --decrypt /secrets/postgres.env.age > /secrets/postgres.env"]
+    container_name: "sops"    
     environment:
-      - SOPS_AGE_KEY_FILE=/age/key.txt
+      - DEPLOY_MODE=3  # Cambia según sea necesario (iniciar/encriptar/desencriptar)
+    command: /bin/bash -c "/startup.sh"
     volumes:
       - ./secrets:/secrets
-      - ./age:/age:ro
+      - ./sops:/sops
+      - ./startup.sh:/startup.sh:ro
 
   #Contenedor Postgres
 
